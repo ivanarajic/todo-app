@@ -95,7 +95,7 @@ function Todos() {
   };
 
   return (
-    <div className="absolute mt-20 max-w-[500px] w-full px-6 sm:px-0">
+    <div className="absolute mt-20 max-w-[500px] w-full px-6 py-[0.1px] sm:px-0">
       <header className="flex justify-between items-center mb-16">
         <div>
           <h1 className="sm:text-4xl text-3xl font-bold uppercase text-white tracking-[.50em] text-left ">
@@ -108,7 +108,7 @@ function Todos() {
       </header>
       <form
         onSubmit={submitHandler}
-        className="inline-flex items-center mb-14 "
+        className="relative flex items-center mb-14 "
       >
         <div className="w-6 h-6 absolute ml-5 border border-slate-300 rounded-full z-10 dark:border-[#393a4d] dark:text-[#4d5066]" />
         <input
