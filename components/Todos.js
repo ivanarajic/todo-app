@@ -106,7 +106,10 @@ function Todos() {
           <ThemeToggler />
         </div>
       </header>
-      <form onSubmit={submitHandler} className="relative flex items-center ">
+      <form
+        onSubmit={submitHandler}
+        className="relative flex items-center mb-14 "
+      >
         <div className="w-6 h-6 absolute ml-5 border border-slate-300 rounded-full z-10 dark:border-[#393a4d] dark:text-[#4d5066]" />
         <input
           value={input}
@@ -124,7 +127,7 @@ function Todos() {
             <ul
               {...provided.droppableProps}
               ref={provided.innerRef}
-              className="mt-14 shadow-xl"
+              className="shadow-xl"
             >
               {filteredTodos.map((todo, index) => (
                 <TodoItem
