@@ -108,7 +108,7 @@ function Todos() {
       </header>
       <form
         onSubmit={submitHandler}
-        className="relative flex items-center mb-14 "
+        className="inline-flex items-center mb-14 "
       >
         <div className="w-6 h-6 absolute ml-5 border border-slate-300 rounded-full z-10 dark:border-[#393a4d] dark:text-[#4d5066]" />
         <input
@@ -121,6 +121,7 @@ function Todos() {
           placeholder="Create a new todo"
         />
       </form>
+
       <DragDropContext onDragEnd={onDragEnd}>
         <Droppable droppableId="characters">
           {(provided) => (
@@ -143,6 +144,7 @@ function Todos() {
           )}
         </Droppable>
       </DragDropContext>
+
       {todos.length > 0 ? (
         <>
           <TodoFilter
