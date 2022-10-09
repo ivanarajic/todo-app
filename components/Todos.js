@@ -95,7 +95,7 @@ function Todos() {
   };
 
   return (
-    <div className="absolute mt-20 max-w-[500px] w-full px-6 py-[0.1px] sm:px-0">
+    <div className="absolute mt-20 max-w-[500px] w-full px-6 py-[0.05px] sm:px-0">
       <header className="flex justify-between items-center mb-16">
         <div>
           <h1 className="sm:text-4xl text-3xl font-bold uppercase text-white tracking-[.50em] text-left ">
