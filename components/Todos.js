@@ -106,10 +106,7 @@ function Todos() {
           <ThemeToggler />
         </div>
       </header>
-      <form
-        onSubmit={submitHandler}
-        className="relative flex items-center mb-14 "
-      >
+      <form onSubmit={submitHandler} className="relative flex items-center ">
         <div className="w-6 h-6 absolute ml-5 border border-slate-300 rounded-full z-10 dark:border-[#393a4d] dark:text-[#4d5066]" />
         <input
           value={input}
@@ -121,30 +118,30 @@ function Todos() {
           placeholder="Create a new todo"
         />
       </form>
-
-      <DragDropContext onDragEnd={onDragEnd}>
-        <Droppable droppableId="characters">
-          {(provided) => (
-            <ul
-              {...provided.droppableProps}
-              ref={provided.innerRef}
-              className="shadow-xl"
-            >
-              {filteredTodos.map((todo, index) => (
-                <TodoItem
-                  key={todo.id}
-                  index={index}
-                  todo={todo}
-                  completeTodo={completeTodo}
-                  deleteTodo={deleteTodo}
-                />
-              ))}
-              {provided.placeholder}
-            </ul>
-          )}
-        </Droppable>
-      </DragDropContext>
-
+      <div className="mt-14">
+        <DragDropContext onDragEnd={onDragEnd}>
+          <Droppable droppableId="characters">
+            {(provided) => (
+              <ul
+                {...provided.droppableProps}
+                ref={provided.innerRef}
+                className="shadow-xl"
+              >
+                {filteredTodos.map((todo, index) => (
+                  <TodoItem
+                    key={todo.id}
+                    index={index}
+                    todo={todo}
+                    completeTodo={completeTodo}
+                    deleteTodo={deleteTodo}
+                  />
+                ))}
+                {provided.placeholder}
+              </ul>
+            )}
+          </Droppable>
+        </DragDropContext>
+      </div>
       {todos.length > 0 ? (
         <>
           <TodoFilter
