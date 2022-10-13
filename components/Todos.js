@@ -95,7 +95,7 @@ function Todos() {
   };
 
   return (
-    <div className="absolute mt-20 max-w-[500px] w-full px-6 py-[0.05px] sm:px-0">
+    <div className="flex flex-col mt-20 max-w-[500px] w-full px-6 sm:px-0 z-50">
       <header className="flex justify-between items-center mb-16">
         <div>
           <h1 className="sm:text-4xl text-3xl font-bold uppercase text-white tracking-[.50em] text-left ">
@@ -145,7 +145,7 @@ function Todos() {
         </Droppable>
       </DragDropContext>
 
-      {todos.length > 0 ? (
+      {todos.length ? (
         <>
           <TodoFilter
             todos={todos}

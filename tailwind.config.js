@@ -13,8 +13,10 @@ module.exports = {
         sans: ["Josefin Sans"],
       },
       backgroundImage: {
-        "light-image": 'url("/images/bg-desktop-light.jpg")',
-        "dark-image": 'url("/images/bg-desktop-dark.jpg")',
+        "light-img-mobile": 'url("/images/bg-mobile-light.jpg")',
+        "dark-img-mobile": 'url("/images/bg-mobile-dark.jpg")',
+        "light-img-desktop": 'url("/images/bg-desktop-light.jpg")',
+        "dark-img-desktop": 'url("/images/bg-desktop-dark.jpg")',
       },
 
       linearBorderGradients: ({ theme }) => ({
