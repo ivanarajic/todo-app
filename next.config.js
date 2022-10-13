@@ -13,4 +13,8 @@ module.exports = {
 
     return config;
   },
+  i18n: {
+    locales: ["en"],
+    defaultLocale: "en",
+  },
 };

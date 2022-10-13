@@ -9,7 +9,7 @@ function Todos() {
   const [todos, setTodos] = useState([]);
   const [input, setInput] = useState("");
   const [filterStatus, setFilterStatus] = useState("all");
-  const [filteredTodos, setFilteredTodos] = useState(todos);
+  const [filteredTodos, setFilteredTodos] = useState([]);
 
   useEffect(() => {
     const items = JSON.parse(localStorage.getItem("todos"));
@@ -27,14 +27,13 @@ function Todos() {
       switch (filterStatus) {
         case "active":
           return setFilteredTodos(todos.filter((todo) => !todo.completed));
-
         case "completed":
           return setFilteredTodos(todos.filter((todo) => todo.completed));
-
         default:
           return setFilteredTodos(todos);
       }
     };
+
     handleFilter();
   }, [todos, filterStatus]);
 
@@ -45,12 +44,12 @@ function Todos() {
   };
   const addTodo = (text) => {
     const newTodos = [
-      ...todos,
       {
         title: text,
         completed: false,
         id: Math.random().toString(36).slice(2, 7),
       },
+      ...todos,
     ];
     setTodos(newTodos);
   };
@@ -122,31 +121,30 @@ function Todos() {
         />
       </form>
 
-      <DragDropContext onDragEnd={onDragEnd}>
-        <Droppable droppableId="characters">
-          {(provided) => (
-            <ul
-              {...provided.droppableProps}
-              ref={provided.innerRef}
-              className="shadow-xl"
-            >
-              {filteredTodos.map((todo, index) => (
-                <TodoItem
-                  key={todo.id}
-                  index={index}
-                  todo={todo}
-                  completeTodo={completeTodo}
-                  deleteTodo={deleteTodo}
-                />
-              ))}
-              {provided.placeholder}
-            </ul>
-          )}
-        </Droppable>
-      </DragDropContext>
-
       {todos.length ? (
         <>
+          <DragDropContext onDragEnd={onDragEnd}>
+            <Droppable droppableId="characters">
+              {(provided) => (
+                <ul
+                  {...provided.droppableProps}
+                  ref={provided.innerRef}
+                  className="shadow-xl"
+                >
+                  {filteredTodos.map((todo, index) => (
+                    <TodoItem
+                      key={todo.id}
+                      index={index}
+                      todo={todo}
+                      completeTodo={completeTodo}
+                      deleteTodo={deleteTodo}
+                    />
+                  ))}
+                  {provided.placeholder}
+                </ul>
+              )}
+            </Droppable>
+          </DragDropContext>
           <TodoFilter
             todos={todos}
             filterStatus={filterStatus}
