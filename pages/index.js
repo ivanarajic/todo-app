@@ -11,7 +11,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="absolute top-0 right-0 left-0 w-full sm:h-[45%] h-[30%] bg-light-img-mobile bg-cover sm:bg-light-img-desktop dark:bg-dark-img-mobile dark:sm:bg-dark-img-desktop" />
+      <div className="absolute top-0 right-0 left-0 w-full sm:h-[45%] h-[30%] bg-light-img-mobile bg-cover sm:bg-light-img-desktop dark:bg-dark-img-mobile dark:sm:bg-dark-img-desktop z-[-1]" />
       <div className="flex justify-center">
         <Todos />
       </div>
