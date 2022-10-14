@@ -9,7 +9,6 @@ function Todos() {
   const [todos, setTodos] = useState([]);
   const [input, setInput] = useState("");
   const [filterStatus, setFilterStatus] = useState("all");
-  const [filteredTodos, setFilteredTodos] = useState([]);
 
   useEffect(() => {
     const items = JSON.parse(localStorage.getItem("todos"));
@@ -21,21 +20,6 @@ function Todos() {
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
-
-  useEffect(() => {
-    const handleFilter = () => {
-      switch (filterStatus) {
-        case "active":
-          return setFilteredTodos(todos.filter((todo) => !todo.completed));
-        case "completed":
-          return setFilteredTodos(todos.filter((todo) => todo.completed));
-        default:
-          return setFilteredTodos(todos);
-      }
-    };
-
-    handleFilter();
-  }, [todos, filterStatus]);
 
   const completeTodo = (index) => {
     const newTodos = [...todos];
@@ -131,15 +115,23 @@ function Todos() {
                   ref={provided.innerRef}
                   className="shadow-xl"
                 >
-                  {filteredTodos.map((todo, index) => (
-                    <TodoItem
-                      key={todo.id}
-                      index={index}
-                      todo={todo}
-                      completeTodo={completeTodo}
-                      deleteTodo={deleteTodo}
-                    />
-                  ))}
+                  {todos
+                    .filter((t) => {
+                      if (filterStatus === "all") return t;
+                      else if (filterStatus === "active")
+                        return t.completed === false;
+                      else if (filterStatus === "completed")
+                        return t.completed === true;
+                    })
+                    .map((todo, index) => (
+                      <TodoItem
+                        key={todo.id}
+                        index={index}
+                        todo={todo}
+                        completeTodo={completeTodo}
+                        deleteTodo={deleteTodo}
+                      />
+                    ))}
                   {provided.placeholder}
                 </ul>
               )}
